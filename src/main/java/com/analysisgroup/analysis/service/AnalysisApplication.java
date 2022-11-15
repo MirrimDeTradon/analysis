@@ -16,5 +16,6 @@ public class AnalysisApplication {
 		ObserverTest observerTest = new ObserverTest();
 		FactoryTest factoryTest = new FactoryTest();
 		DecoratorTest decoratorTest = new DecoratorTest();
+		StateTest stateTest = new StateTest();
 	}
 }

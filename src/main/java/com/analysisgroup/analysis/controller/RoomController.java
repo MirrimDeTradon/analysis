@@ -15,4 +15,16 @@ public class RoomController {
         }
         return slotsAvailable;
     }
+    public String screenTypeButtonPressed(String state){
+        switch(state){
+            case "2D":
+                return "3D";
+            case "3D":
+                return "4D";
+            case "4D":
+                return "2D";
+            default:
+                return "2D";
+        }
+    }
 }

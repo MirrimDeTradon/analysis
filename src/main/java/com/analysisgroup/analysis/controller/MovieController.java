@@ -4,5 +4,5 @@ import com.analysisgroup.analysis.service.*;
 
 public class MovieController {
     public MovieController(){
-    }    
+    }
 }
