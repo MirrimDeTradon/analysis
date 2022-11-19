@@ -16,5 +16,4 @@ public class ThreeDimensional extends TicketDecorator{
         System.out.println("Cost of viewing 3D movie: " + 2.0);
         return movieTicket.getCost() + 2.0;
     }
-
 }

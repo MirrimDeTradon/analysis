@@ -10,29 +10,39 @@ public class BookingSystemView {
         RoomController roomController = new RoomController();
         Scanner in = new Scanner(System.in);
         for(int i = 0; i < rooms.size(); i++){
-            for(int j = 0; j < 100; j++){
-                System.out.println();
-            }
+            System.out.println();
             Room room = rooms.get(i);
             System.out.println(room.getName());
             System.out.println("Seats available:");
             ArrayList<String> slotsAvailable = roomController.getSlotsAvailable(room);
             for(int y = 0; y < slotsAvailable.size(); y++){
                 if(y == slotsAvailable.size() - 1){
-                    System.out.print(slotsAvailable.get(y) + ".");
+                    System.out.println(slotsAvailable.get(y) + ".");
                 } else {
                     System.out.print(slotsAvailable.get(y) + ", ");
                 }
             }
+            int h = 0;
+            while(h==0){
+                System.out.println("What seat would you like to book?");
+                String s = in.nextLine();
+                if(slotsAvailable.contains(s)){
+                    roomController.getSlotsAvailable(room).remove(s);
+                    h++;
+                } else {
+                    System.out.println("");
+                    System.out.println("Unrecognised Seat, please try again!");
+                    
+                    System.out.println("Seats available:");
+                    for(int y = 0; y < slotsAvailable.size(); y++){
+                        if(y == slotsAvailable.size() - 1){
+                            System.out.println(slotsAvailable.get(y) + ".");
+                        } else {
+                            System.out.print(slotsAvailable.get(y) + ", ");
+                        }
+                    }
+                }
+            }
         }
-        
-        String s = in.nextLine();
-        System.out.println("You entered string " + s);
-
-        int a = in.nextInt();
-        System.out.println("You entered integer " + a);
-
-        float b = in.nextFloat();
-        System.out.println("You entered float " + b);
     }
 }
