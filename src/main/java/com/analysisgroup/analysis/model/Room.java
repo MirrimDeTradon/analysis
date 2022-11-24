@@ -1,9 +1,23 @@
 package com.analysisgroup.analysis.model;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
+@Entity
 public class Room {
     public Room(){
     }
+
+    public Room(String name, int capacity, boolean disabledAccess, String screenType) {
+        this.name = name;
+        this.capacity = capacity;
+        this.disabledAccess = disabledAccess;
+        this.screenType = screenType;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long primaryID;
     private int id;
     private String name;
     private int capacity;
@@ -12,7 +26,18 @@ public class Room {
     private boolean disabledAccess;
     private String screenType;
     private ArrayList<String> seatsTaken;
-    private ArrayList<Movie> movies;
+
+    @OneToMany(mappedBy="movie")
+    private ArrayList<Movie> movies = new ArrayList<>(); //initialize property by default
+
+
+    public Long getPrimaryID() {
+        return primaryID;
+    }
+
+    public void setPrimaryID(Long primaryID) {
+        this.primaryID = primaryID;
+    }
 
     public int getId(){
         return this.id;
@@ -67,5 +92,36 @@ public class Room {
     }
     public void setMovies(ArrayList<Movie> movies){
         this.movies = movies;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "primaryID=" + primaryID +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", capacity=" + capacity +
+                ", seatNames=" + seatNames +
+                ", disabledSeats=" + disabledSeats +
+                ", disabledAccess=" + disabledAccess +
+                ", screenType='" + screenType + '\'' +
+                ", seatsTaken=" + seatsTaken +
+                ", movies=" + movies +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Room room = (Room) o;
+
+        return Objects.equals(primaryID, room.primaryID);
+    }
+
+    @Override
+    public int hashCode() {
+        return primaryID != null ? primaryID.hashCode() : 0;
     }
 }

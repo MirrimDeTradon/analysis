@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AnalysisApplication {
 
 	public static void main(String[] args) {
+		SpringApplication.run(AnalysisApplication.class, args);
 		ObserverTest observerTest = new ObserverTest();
 		FactoryTest factoryTest = new FactoryTest();
 		DecoratorTest decoratorTest = new DecoratorTest();
