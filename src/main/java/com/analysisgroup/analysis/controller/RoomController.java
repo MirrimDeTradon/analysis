@@ -15,16 +15,24 @@ public class RoomController {
         }
         return slotsAvailable;
     }
-    public String screenTypeButtonPressed(String state){
+    public Room screenTypeButtonPressed(Room room){
+        String state = room.getScreenType().getType();
         switch(state){
             case "2D":
-                return "3D";
+                room.setScreenType(new Screen3D());
+                return room;
             case "3D":
-                return "4D";
+                room.setScreenType(new Screen4D());
+                return room;
             case "4D":
-                return "2D";
+                room.setScreenType(new ScreenIMAX());
+                return room;
+            case "IMAX":
+                room.setScreenType(new Screen2D());
+                return room;
             default:
-                return "2D";
+                room.setScreenType(new Screen2D());
+                return room;
         }
     }
 }

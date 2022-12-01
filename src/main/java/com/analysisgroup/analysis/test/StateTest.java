@@ -34,7 +34,6 @@ public class StateTest {
 		room1.setSeatNames(new ArrayList<String>(Arrays.asList("a1","a2","b1","b2","c1")));
 		room1.setDisabledSeats(new ArrayList<String>(Arrays.asList("a1","a2")));
 		room1.setDisabledAccess(true);
-		room1.setScreenType("3D");
 		room1.setSeatsTaken(new ArrayList<String>(Arrays.asList("a1","c1")));
 
 		room1.setMovies(new ArrayList<Movie>(Arrays.asList(movie1, movie2)));

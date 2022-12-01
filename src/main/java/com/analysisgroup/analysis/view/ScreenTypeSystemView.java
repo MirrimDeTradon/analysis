@@ -11,11 +11,11 @@ public class ScreenTypeSystemView {
     public ScreenTypeSystemView(ArrayList<Room> rooms){
         RoomController roomController = new RoomController();
         Room room1 = rooms.get(0);
-        room1.setScreenType("2D");
-        System.out.println("ScreenType is equal to: " + room1.getScreenType());
-        room1.setScreenType(roomController.screenTypeButtonPressed(room1.getScreenType()));
+        room1.getScreenType().printType();
+        
         System.out.println("Pressing the ScreenType Button");
-        System.out.println("ScreenType is equal to: " + room1.getScreenType());
-        assertTrue(room1.getScreenType().equals("3D"));
+        roomController.screenTypeButtonPressed(room1);
+        room1.getScreenType().printType();
+        assertTrue(room1.getScreenType().getType().equals("3D"));
     }
 }

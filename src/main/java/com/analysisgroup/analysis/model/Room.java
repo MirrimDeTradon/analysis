@@ -6,9 +6,10 @@ import java.util.Objects;
 @Entity
 public class Room {
     public Room(){
+        this.screenType = new Screen2D();
     }
 
-    public Room(String name, int capacity, boolean disabledAccess, String screenType) {
+    public Room(String name, int capacity, boolean disabledAccess, ScreenType screenType) {
         this.name = name;
         this.capacity = capacity;
         this.disabledAccess = disabledAccess;
@@ -24,7 +25,7 @@ public class Room {
     private ArrayList<String> seatNames;
     private ArrayList<String> disabledSeats;
     private boolean disabledAccess;
-    private String screenType;
+    private ScreenType screenType;
     private ArrayList<String> seatsTaken;
 
     @OneToMany(mappedBy="movie")
@@ -57,7 +58,7 @@ public class Room {
     public boolean getDisabledAccess(){
         return this.disabledAccess;
     }
-    public String getScreenType(){
+    public ScreenType getScreenType(){
         return this.screenType;
     }
     public ArrayList<String> getSeatsTaken(){
@@ -84,14 +85,14 @@ public class Room {
     public void setDisabledAccess(boolean disabledAccess){
         this.disabledAccess = disabledAccess;
     }
-    public void setScreenType(String screenType){
-        this.screenType = screenType;
-    }
     public void setSeatsTaken(ArrayList<String> seatsTaken){
         this.seatsTaken = seatsTaken;
     }
     public void setMovies(ArrayList<Movie> movies){
         this.movies = movies;
+    }
+    public void setScreenType(ScreenType screenType){
+        this.screenType = screenType;
     }
 
     @Override

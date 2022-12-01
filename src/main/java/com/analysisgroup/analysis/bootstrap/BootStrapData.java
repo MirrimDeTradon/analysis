@@ -1,7 +1,6 @@
 package com.analysisgroup.analysis.bootstrap;
 
-import com.analysisgroup.analysis.model.Movie;
-import com.analysisgroup.analysis.model.Room;
+import com.analysisgroup.analysis.model.*;
 import com.analysisgroup.analysis.repositories.MovieRepository;
 import com.analysisgroup.analysis.repositories.RoomRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -22,7 +21,7 @@ public class BootStrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Room  mainOne = new Room("mainOne", 300, true, "3D");
+        Room  mainOne = new Room("mainOne", 300, true, new Screen3D());
         Movie lordOfTheRings = new Movie("LOTR Twin Towers", mainOne, 180, "good", "fantasy", "3D");
         mainOne.getMovies().add(lordOfTheRings);
 
@@ -30,7 +29,7 @@ public class BootStrapData implements CommandLineRunner {
         roomRepository.save(mainOne);
         movieRepository.save(lordOfTheRings);
 
-        Room  mainTwo = new Room("mainTwo", 265, true, "Imax");
+        Room  mainTwo = new Room("mainTwo", 265, true, new ScreenIMAX());
         Movie theHobbit = new Movie("The Hobbit: An Unexpected Journey", mainTwo, 165, "great", "fantasy", "Imax");
         mainOne.getMovies().add(theHobbit);
 
